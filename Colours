@@ -1,0 +1,30 @@
+#VARIABLE {TTMod_Colours} {}
+
+#FOREACH {A;B;C;D;E;F} {c}
+  {
+    #FOREACH {A;B;C;D;E;F} {b}
+      {
+        #FOREACH {A;B;C;D;E;F} {a} 
+          {
+            #VARIABLE {TTMod_Colours[$a]} {$TTMod_Colours[$a] <$a$b$c> $a$b$c }
+          }
+      }
+  }
+
+#FOREACH {a;b;c;d;e;f} {c}
+  {
+    #FOREACH {a;b;c;d;e;f} {b}
+      {
+        #FOREACH {a;b;c;d;e;f} {a} 
+          {
+            #VARIABLE {TTMod_Colours[$a]} {$TTMod_Colours[$a] <$a$b$c> $a$b$c }
+          }
+      }
+  }
+
+#UNVARIABLE a
+#UNVARIABLE b
+#UNVARIABLE c
+
+#ALIAS {ttmod-cols} {#foreach {A;B;C;D;E;F;a;b;c;d;e;f} {a} {#SHOWME $TTMod_Colours[$a]}}
+
